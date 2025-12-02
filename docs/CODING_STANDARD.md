@@ -99,6 +99,7 @@ example-logo.jsx
 blog-page-list.js
 create-paginated-routes.js
 nav-menu-header.module.css
+example-img.webp
 ```
 
 **Константи - UPPER_SNAKE_CASE:**
