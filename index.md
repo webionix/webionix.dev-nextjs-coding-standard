@@ -1,9 +1,3 @@
-<style>
-  .markdown-body > h1:first-of-type {
-    display: none !important;
-  }
-</style>
-
 # Стандарти коду Next.js
 
 ---
