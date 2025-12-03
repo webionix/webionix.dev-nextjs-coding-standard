@@ -1,8 +1,8 @@
 # coding-standard-nextjs
 
-## 1. Експорти
+## 1. Exports
 
-### 1.1 Використовуємо "export default function" у файлах:
+### 1.1 We use "export default function" in the files:
 
 ```text
 page.jsx
@@ -14,34 +14,36 @@ proxy.js
 
 ```javascript
 export default function Page() {}
+export default function Layout() {}
 ```
 
-### 1.2 Звичайні React-компоненти. Використовуємо "export function" іменні експорти:
+### 1.2 Regular React components. We use "export function" named exports:
 
 ```javascript
+export function ReactComponent() {}
 export function Header() {}
 export function Logo() {}
-export function NavMenuHeader() {}
+export function Footer() {}
 ```
 
-### 1.3 Локальні хелпери всередині компонентів стрілочні функції. Не експортуються:
+### 1.3 Local helpers inside components are arrow functions. They are not exported:
 
 ```javascript
-const formatPrice = () => {};
+const exampleFunction = () => {};
 ```
 
-### 1.4 Утиліти в /utils, /lib, /config також "export function" іменні експорти:
+### 1.4 Utilities in /utils, /lib, /config also use "export function" named exports:
 
 ```javascript
-export function generateAlternates() {}
+export function exampleFunction() {}
 export function getOrigin() {}
 ```
 
-## 2. Порядок імпортів, групи імпортів (зверху вниз)
+## 2. Import order and import groups (from top to bottom)
 
-### 2.1 Імпорти
+### 2.1 Imports
 
-**Порядок груп:**
+**Order of groups:**
 
 ```text
 external libs (react / next / packages)
@@ -54,7 +56,7 @@ images / icons
 styles
 ```
 
-**Між групами — порожній рядок:**
+**There is an empty line between groups:**
 
 ```javascript
 import Link from "next/link";
@@ -62,7 +64,7 @@ import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 import { routeList } from "@/config/routes/route-list";
-import { COMPANY_INFO } from "@/config/company-info";
+import { companyInfo } from "@/config/company-info";
 
 import { BLOG_CATEGORIES } from "@/constants/blog-categories";
 
@@ -81,13 +83,14 @@ import { LogoIcon } from "@/components/icons/logo-icon";
 import styles from "./nav-menu-header.module.css";
 ```
 
-## 3. Неймінг
+## 3. Naming
 
-### 3.1 Імена файлів JS, TS, CSS, SCSS, SASS, JSX, TSX, ...
+### 3.1 File and folder names in JS, TS, CSS, SCSS, SASS, JSX, TSX, ...
 
-**Формат — kebab-case:**
+**Format — kebab-case:**
 
 ```text
+folder-example-name
 nav-menu-header.jsx
 example-logo.jsx
 blog-page-list.js
@@ -96,25 +99,25 @@ nav-menu-header.module.css
 example-img.webp
 ```
 
-**Константи - UPPER_SNAKE_CASE:**
+**Constants — UPPER_SNAKE_CASE:**
 
 ```text
 SEO_CONFIG.js
 STATUS_CODES.js
 ```
 
-### 3.2. Імена компонентів
+### 3.2. Component names
 
-**Формат — PascalCase:**
+**Format — PascalCase:**
 
 ```javascript
 export function MobileMenu() {}
 export function FooterNav() {}
 ```
 
-### 3.3. Імена змінних та функцій
+### 3.3. Variable and function names
 
-**Формат — camelCase:**
+**Format — camelCase:**
 
 ```javascript
 const mainNavList = [];
@@ -122,28 +125,27 @@ const isActive = pathName === href;
 const logoData = await getDictionary(lang, "components/logo");
 ```
 
-### 3.4. Конфіги та структури даних
+### 3.4. Configs and data structures
 
-**Використовуємо camelCase:**
+**Format — camelCase:**
 
 ```javascript
 export const mainNavList = [{ id: 1, route: "/", routeKey: "home" }];
 ```
 
-### 3.5 Найменування констант
+### 3.5 Naming of constants
 
-**Формат — UPPER_SNAKE_CASE:**
+**Format — UPPER_SNAKE_CASE:**
 
 ```javascript
-export const API_BASE_URL = "https://api.test.com";
+export const API_BASE_URL = "https://api.base.com";
 export const DEFAULT_PAGE_SIZE = 10;
 export const IS_PRODUCTION = process.env.NODE_ENV === "production";
 ```
 
-**Константи як обьєкти або масиви:**
+**Constants as objects or arrays:**
 
-UPPER_SNAKE_CASE — для самої константи
-camelCase — для ключів всередині
+UPPER_SNAKE_CASE for the constant itself, camelCase for the keys inside
 
 ```javascript
 export const SUPPORTED_LANGUAGES = ["en", "pl", "ua", "ru"];
@@ -154,7 +156,7 @@ export const BLOG_CONFIG = {
 };
 ```
 
-**Уся папка /constants повинна містити тільки константи у UPPER_SNAKE_CASE:**
+**The entire /constants folder must contain only constants in UPPER_SNAKE_CASE:**
 
 > `src/constants/`
 
