@@ -1,4 +1,4 @@
-# coding-standard-nextjs
+# webionix-nextjs-coding-standard
 
 ## 1. Exports
 
